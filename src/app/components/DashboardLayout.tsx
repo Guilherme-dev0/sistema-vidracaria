@@ -16,13 +16,19 @@ interface DashboardLayoutProps {
   children?: ReactNode;
   onLogout?: () => void;
   onMenuChange?: (menuId: string) => void;
+  activeModule?: string;
 }
 
-export function DashboardLayout({ children, onLogout, onMenuChange }: DashboardLayoutProps) {
-  const [activeMenu, setActiveMenu] = useState('dashboard');
+export function DashboardLayout({ children, onLogout, onMenuChange, activeModule }: DashboardLayoutProps) {
+  const [localActiveMenu, setLocalActiveMenu] = useState('dashboard');
+  // Usar activeModule da prop se fornecido, caso contrário usar estado local
+  const activeMenu = activeModule || localActiveMenu;
 
   const handleMenuClick = (menuId: string) => {
-    setActiveMenu(menuId);
+    // Atualizar estado local se activeModule não for fornecido
+    if (!activeModule) {
+      setLocalActiveMenu(menuId);
+    }
     onMenuChange?.(menuId);
   };
 

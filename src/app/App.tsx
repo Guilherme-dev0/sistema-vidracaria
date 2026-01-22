@@ -91,7 +91,11 @@ export default function App() {
           onGoToLogin={() => setCurrentView('login')}
         />
       ) : (
-        <DashboardLayout onLogout={handleLogout} onMenuChange={handleMenuChange}>
+        <DashboardLayout 
+          onLogout={handleLogout} 
+          onMenuChange={handleMenuChange}
+          activeModule={activeModule}
+        >
           {renderModuleContent()}
         </DashboardLayout>
       )}
