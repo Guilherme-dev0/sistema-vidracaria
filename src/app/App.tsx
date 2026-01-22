@@ -10,6 +10,7 @@ import { SaidaMaterialContent } from "@/app/components/SaidaMaterialContent";
 import { UsuariosContent } from "@/app/components/UsuariosContent";
 import { EntradaMaterialContent } from "@/app/components/EntradaMaterialContent";
 import { ProdutosContent } from "@/app/components/ProdutosContent";
+import { ConsultaEstoqueContent } from "@/app/components/ConsultaEstoqueContent";
 
 export default function App() {
   const [currentView, setCurrentView] = useState<'login' | 'register' | 'dashboard'>('login');
@@ -70,6 +71,8 @@ export default function App() {
         return <SaidaMaterialContent />;
       case 'usuarios':
         return <UsuariosContent />;
+      case 'consulta':
+        return <ConsultaEstoqueContent />;
       default:
         return <DashboardContent />;
     }
